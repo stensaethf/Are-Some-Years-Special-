@@ -13,7 +13,6 @@ To Do:
 
 import sys
 import matplotlib.pyplot as mplot
-import matplotlib.animation as animation
 from matplotlib import style
 
 def main():
@@ -26,6 +25,7 @@ def main():
 	figure = mplot.figure()
 	actual_plot = figure.add_subplot(1, 1, 1)
 
+	# get the command line arguments and do necessary error checks.
 	mode = sys.argv[1]
 	y_s = int(sys.argv[2])
 	y_e = int(sys.argv[3])
@@ -33,10 +33,15 @@ def main():
 	if y_e < y_s:
 		print 'Error: end < start'
 		sys.exit()
+	elif (y_e < 0) or (y_s < 0):
+		print 'Error: year < 0'
+		sys.exit()
 
 	res = []
 	x_values = []
 	if mode == 'normal':
+		# normal mode.
+		# loop over each desired year and check for divisors.
 		for year in range(y_s, y_e + 1):
 			x_values.append(year)
 			total = 0
