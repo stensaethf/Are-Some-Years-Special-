@@ -6,9 +6,9 @@ Frederik Roenn Stensaeth
 An investigation into whether some years are more special than others.
 
 To Do:
-- Divisors.
+- Divisors. DONE.
 - Dynamic programming solution.
-- Which is faster?
+- Which is faster? time them.
 '''
 
 import sys
@@ -33,18 +33,17 @@ def main():
 	if y_e < y_s:
 		print 'Error: end < start'
 		sys.exit()
-	elif (y_e < 0) or (y_s < 0):
+	elif y_s < 1:
 		print 'Error: year < 0'
 		sys.exit()
 
 	res = []
-	x_values = []
+	x_values = [yr for yr in range(y_s, y_e + 1)]
 	if mode == 'normal':
 		# normal mode.
 		# loop over each desired year and check for divisors.
 		for year in range(y_s, y_e + 1):
-			x_values.append(year)
-			total = 0
+			total = 1 # start at 1 because of division by itself.
 			for num in range(1, (year / 2) + 1):
 				if 0 == year % num:
 					total += 1
@@ -54,11 +53,11 @@ def main():
 		sys.exit()
 
 	# testing
-	print('Maximum number of divisors: ' + str(max(res)))
-	print('Year: ' + str(res.index(max(res))))
+	print('Year with highest number of divisors: ' + str(res.index(max(res)) + y_s))
+	print('Number of divisors in that year: ' + str(max(res)))
 
 	# plot the results
-	actual_plot.plot(x_values,res, 'k')
+	actual_plot.plot(x_values, res, 'k')
 	mplot.show()
 
 
