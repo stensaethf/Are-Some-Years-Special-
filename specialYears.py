@@ -27,7 +27,7 @@ def main():
 
 	res = []
 	if mode == 'normal':
-		for year in range(y_s, y_e):
+		for year in range(y_s, y_e + 1):
 			total = 0
 			for num in range(1, (year / 2) + 1):
 				if 0 == year % num:
@@ -36,7 +36,10 @@ def main():
 	else:
 		print 'Error: mode'
 		sys.exit()
+
+	# testing
 	print(res)
+
 
 if __name__ == '__main__':
 	main()
