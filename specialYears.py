@@ -14,6 +14,7 @@ To Do:
 import sys
 import matplotlib.pyplot as mplot
 from matplotlib import style
+import time
 
 def main():
 	# usage: $ python specialYears.py normal <start year> <end year> ...
@@ -39,6 +40,7 @@ def main():
 
 	res = []
 	x_values = [yr for yr in range(y_s, y_e + 1)]
+	t_s = time.time()
 	if mode == 'normal':
 		# normal mode.
 		# loop over each desired year and check for divisors.
@@ -51,8 +53,10 @@ def main():
 	else:
 		print 'Error: mode'
 		sys.exit()
+	t_f = time.time()
 
 	# testing
+	print('Time to run: ' + str(t_f - t_s) + 'sec.')
 	print('Year with highest number of divisors: ' + str(res.index(max(res)) + y_s))
 	print('Number of divisors in that year: ' + str(max(res)))
 
