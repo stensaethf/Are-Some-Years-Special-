@@ -1,7 +1,7 @@
 '''
 specialYears.py
 Frederik Roenn Stensaeth
-01.03.15
+01.03.16
 
 An investigation into whether some years are more special than others.
 
@@ -12,10 +12,19 @@ To Do:
 '''
 
 import sys
+import matplotlib.pyplot as mplot
+import matplotlib.animation as animation
+from matplotlib import style
 
 def main():
 	# usage: $ python specialYears.py normal <start year> <end year> ...
 	# usage: $ python specialYears.py dynamic <start year> <end year> ...
+
+	# Changing the style gives us a little nicer looking backframe for the graph.
+	style.use('ggplot')
+
+	figure = mplot.figure()
+	actual_plot = figure.add_subplot(1, 1, 1)
 
 	mode = sys.argv[1]
 	y_s = int(sys.argv[2])
@@ -26,8 +35,10 @@ def main():
 		sys.exit()
 
 	res = []
+	x_values = []
 	if mode == 'normal':
 		for year in range(y_s, y_e + 1):
+			x_values.append(year)
 			total = 0
 			for num in range(1, (year / 2) + 1):
 				if 0 == year % num:
@@ -38,7 +49,12 @@ def main():
 		sys.exit()
 
 	# testing
-	print(res)
+	print('Maximum number of divisors: ' + str(max(res)))
+	print('Year: ' + str(res.index(max(res))))
+
+	# plot the results
+	actual_plot.plot(x_values,res, 'k')
+	mplot.show()
 
 
 if __name__ == '__main__':
