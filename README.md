@@ -5,8 +5,7 @@ An old friend of mine inspired me to look into whether a pattern existed for how
 
 Usage:
 $ python specialYears.py \<normal | dynamic \> \<start year\> 
-<end year
-> ...
+<end year\> ...
 
 Note: the dynamic option has not been implemented yet.
 
