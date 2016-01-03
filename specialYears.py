@@ -29,13 +29,14 @@ def main():
 	if mode == 'normal':
 		for year in range(y_s, y_e):
 			total = 0
-			for num in range(1, year / 2):
+			for num in range(1, (year / 2) + 1):
 				if 0 == year % num:
 					total += 1
 			res.append(total)
 	else:
 		print 'Error: mode'
 		sys.exit()
+	print(res)
 
 if __name__ == '__main__':
 	main()
