@@ -10,3 +10,32 @@ To Do:
 - Dynamic programming solution.
 - Which is faster?
 '''
+
+import sys
+
+def main():
+	# usage: $ python specialYears.py normal <start year> <end year> ...
+	# usage: $ python specialYears.py dynamic <start year> <end year> ...
+
+	mode = sys.argv[1]
+	y_s = int(sys.argv[2])
+	y_e = int(sys.argv[3])
+
+	if y_e < y_s:
+		print 'Error: end < start'
+		sys.exit()
+
+	res = []
+	if mode == 'normal':
+		for year in range(y_s, y_e):
+			total = 0
+			for num in range(1, year / 2):
+				if 0 == year % num:
+					total += 1
+			res.append(total)
+	else:
+		print 'Error: mode'
+		sys.exit()
+
+if __name__ == '__main__':
+	main()
