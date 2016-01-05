@@ -17,15 +17,15 @@ import matplotlib.pyplot as mplot
 from matplotlib import style
 import time
 
-def isPrime(year):
+def isPrime(div):
 	"""
 	isPrime() tells whether a given number is a prime or not.
 
 	@params: year.
 	@return: boolean.
 	"""
-	for i in range(1, (year / 2) + 1):
-		if year % i == 0:
+	for i in range(2, (div / 2) + 1):
+		if div % i == 0:
 			return False
 	return True
 
@@ -70,7 +70,7 @@ def main():
 		for year in range(y_s, y_e + 1):
 			total = 1 # start at 1 because of division by itself.
 			for num in range(1, (year / 2) + 1):
-				if (0 == year % num) and isPrime(year):
+				if (0 == year % num) and isPrime(num):
 					total += 1
 			res.append(total)
 	else:
