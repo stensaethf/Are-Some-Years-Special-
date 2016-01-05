@@ -7,8 +7,9 @@ An investigation into whether some years are more special than others.
 
 To Do:
 - Divisors. DONE.
-- Dynamic programming solution.
-- Which is faster? time them.
+- Is it fast? Time. DONE.
+- Primes.
+- Relationship between divisors and number of primes?
 '''
 
 import sys
@@ -17,8 +18,9 @@ from matplotlib import style
 import time
 
 def main():
-	# usage: $ python specialYears.py normal <start year> <end year> ...
-	# usage: $ python specialYears.py dynamic <start year> <end year> ...
+	# usage: $ python specialYears.py normal <start year> <end year>
+	# usage: $ python specialYears.py primes <start year> <end year>
+	# usage: $ python specialYears.py compare <start year> <end year>
 
 	# Changing the style gives us a little nicer looking backframe for the graph.
 	style.use('ggplot')
