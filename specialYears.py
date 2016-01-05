@@ -8,8 +8,9 @@ An investigation into whether some years are more special than others.
 To Do:
 - Divisors. DONE.
 - Is it fast? Time. DONE.
-- Primes.
-- Relationship between divisors and number of primes?
+- Primes. DONE
+- Relationship between divisors and number of primes? ALMOST DONE.
+	--> interesting to see that 7 primes seem to be the max. Wonder why...
 '''
 
 import sys
@@ -41,6 +42,16 @@ def isPrime(div):
 	return True
 
 def getDivisors(y_s, y_e, res, prime_bol):
+	"""
+	getDivisors() finds the number of divisors for each number within a range
+	of numbers. Can restrict to only primes is needed.
+
+	@params: start number,
+			 end number,
+			 res (list to store results in),
+			 prime boolean (whether to restrict to primes or not).
+	@return: list with divisor counts.
+	"""
 	# loop over each desired year and check for divisors.
 	for year in range(y_s, y_e + 1):
 		total = 1 # start at 1 because of division by itself.
@@ -87,19 +98,16 @@ def main():
 	t_s = time.time()
 	if mode == 'normal':
 		# normal mode.
-		# loop over each desired year and check for divisors.
 		res = getDivisors(y_s, y_e, [], False)
 	elif mode == 'primes':
 		# primes mode.
-		# loop over each desired year and check for primes.
 		res = getDivisors(y_s, y_e, [], True)
 	elif mode == 'compare':
 		# compare mode.
 		x_values = getDivisors(y_s, y_e, [], False) # divisors
-		primes = getDivisors(y_s, y_e, [], True) # primes
+		res = getDivisors(y_s, y_e, [], True) # primes
 
-		# code.
-		print 'more code needed here'
+		print 'more code needed here to fix the graph'
 	else:
 		print 'Error: mode'
 		printUsage()
