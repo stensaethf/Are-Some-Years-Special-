@@ -7,7 +7,7 @@ An investigation into whether some years are more special than others.
 
 To Do:
 - Divisors. DONE.
-- Is it fast? Time. DONE.
+- Is it fast? Time. DONE. Could be faster...
 - Primes. DONE
 - Relationship between divisors and number of primes? ALMOST DONE.
 	--> interesting to see that 7 primes seem to be the max. Wonder why...
@@ -74,16 +74,21 @@ def main():
 		printUsage()
 		sys.exit()
 
-	# Changing the style gives us a little nicer looking backframe for the graph.
+	# Changing the style gives us a nicer looking backframe for the graph.
 	style.use('ggplot')
 
 	figure = mplot.figure()
 	actual_plot = figure.add_subplot(1, 1, 1)
 
 	# get the command line arguments and do necessary error checks.
-	mode = sys.argv[1]
-	y_s = int(sys.argv[2])
-	y_e = int(sys.argv[3])
+	try:
+		mode = sys.argv[1]
+		y_s = int(sys.argv[2])
+		y_e = int(sys.argv[3])
+	except:
+		print 'Error. Problem with arguments given.'
+		printUsage()
+		sys.exit()
 
 	if y_e < y_s:
 		print 'Error: end < start'
