@@ -3,7 +3,7 @@ specialYears.py
 Frederik Roenn Stensaeth
 01.03.16
 
-An investigation into whether some years are more special than others.
+An investigation into whether some years/ numbers are more special than others.
 
 To Do:
 - Divisors. DONE.
@@ -28,15 +28,15 @@ def printUsage():
 	@params: n/a.
 	@return: n/a.
 	"""
-	print 'Usage: $ python specialYears.py normal <start year> <end year>'
-	print 'Usage: $ python specialYears.py primes <start year> <end year>'
-	print 'Usage: $ python specialYears.py compare <start year> <end year>'
+	print 'Usage: $ python specialYears.py normal <start number> <end number>'
+	print 'Usage: $ python specialYears.py primes <start number> <end number>'
+	print 'Usage: $ python specialYears.py compare <start number> <end number>'
 
 def isPrime(div):
 	"""
 	isPrime() tells whether a given number is a prime or not.
 
-	@params: year.
+	@params: number (int).
 	@return: boolean.
 	"""
 	for i in range(2, (div / 2) + 1):
@@ -55,7 +55,7 @@ def getDivisors(y_s, y_e, res, prime_bol):
 			 prime boolean (whether to restrict to primes or not).
 	@return: list with divisor counts.
 	"""
-	# loop over each desired year and check for divisors.
+	# loop over each desired number and check for divisors.
 	for year in range(y_s, y_e + 1):
 		total = 1 # start at 1 because of division by itself.
 		for num in range(1, (year / 2) + 1):
@@ -69,9 +69,9 @@ def getDivisors(y_s, y_e, res, prime_bol):
 	return res
 
 def main():
-	# usage: $ python specialYears.py normal <start year> <end year>
-	# usage: $ python specialYears.py primes <start year> <end year>
-	# usage: $ python specialYears.py compare <start year> <end year>
+	# usage: $ python specialYears.py normal <start number> <end number>
+	# usage: $ python specialYears.py primes <start number> <end number>
+	# usage: $ python specialYears.py compare <start number> <end number>
 	if len(sys.argv) != 4:
 		print 'Error. Invalid number of arguments given.'
 		printUsage()
@@ -98,7 +98,7 @@ def main():
 		printUsage()
 		sys.exit()
 	elif y_s < 1:
-		print 'Error: year < 0'
+		print 'Error: start number < 0'
 		printUsage()
 		sys.exit()
 
@@ -124,8 +124,8 @@ def main():
 
 	# testing
 	print('Time to run: ' + str(t_f - t_s) + 'sec.')
-	print('Year with highest number of divisors: ' + str(res.index(max(res)) + y_s))
-	print('Number of divisors in that year: ' + str(max(res)))
+	print('Number with highest number of divisors: ' + str(res.index(max(res)) + y_s))
+	print('Number of divisors for that number: ' + str(max(res)))
 
 	# plot the results
 	actual_plot.plot(x_values, res, 'k')
