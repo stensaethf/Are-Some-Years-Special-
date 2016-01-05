@@ -94,11 +94,11 @@ def main():
 		sys.exit()
 
 	if y_e < y_s:
-		print 'Error: end < start'
+		print 'Error: end < start.'
 		printUsage()
 		sys.exit()
 	elif y_s < 1:
-		print 'Error: start number < 0'
+		print 'Error: start number < 0.'
 		printUsage()
 		sys.exit()
 
@@ -112,20 +112,22 @@ def main():
 		res = getDivisors(y_s, y_e, [], True)
 	elif mode == 'compare':
 		# compare mode.
-		x_values = getDivisors(y_s, y_e, [], False) # divisors
+		# x-axis: all divisors.
+		# y-axis: primes.
+		x_values = getDivisors(y_s, y_e, [], False) # all divisors
 		res = getDivisors(y_s, y_e, [], True) # primes
 
-		print 'more code needed here to fix the graph'
+		print 'more code needed here to fix the graph.'
 	else:
-		print 'Error: mode'
+		print 'Error: mode.'
 		printUsage()
 		sys.exit()
 	t_f = time.time()
 
 	# testing
 	print('Time to run: ' + str(t_f - t_s) + 'sec.')
-	print('Number with highest number of divisors: ' + str(res.index(max(res)) + y_s))
-	print('Number of divisors for that number: ' + str(max(res)))
+	print('Number with highest number of divisors: ' + str(res.index(max(res)) + y_s) + '.')
+	print('Number of divisors for that number: ' + str(max(res)) + '.')
 
 	# plot the results
 	actual_plot.plot(x_values, res, 'k')
