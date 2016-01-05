@@ -83,21 +83,20 @@ def main():
 		printUsage()
 		sys.exit()
 
-	res = []
 	x_values = [yr for yr in range(y_s, y_e + 1)]
 	t_s = time.time()
 	if mode == 'normal':
 		# normal mode.
 		# loop over each desired year and check for divisors.
-		res = getDivisors(y_s, y_e, res, False)
+		res = getDivisors(y_s, y_e, [], False)
 	elif mode == 'primes':
 		# primes mode.
 		# loop over each desired year and check for primes.
-		res = getDivisors(y_s, y_e, res, True)
+		res = getDivisors(y_s, y_e, [], True)
 	elif mode == 'compare':
 		# compare mode.
-		divisors = []
-		primes = []
+		x_values = getDivisors(y_s, y_e, [], False) # divisors
+		primes = getDivisors(y_s, y_e, [], True) # primes
 
 		# code.
 		print 'more code needed here'
