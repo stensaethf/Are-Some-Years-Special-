@@ -45,7 +45,7 @@ def getDivisors(y_s, y_e, res, prime_bol):
 	for year in range(y_s, y_e + 1):
 		total = 1 # start at 1 because of division by itself.
 		for num in range(1, (year / 2) + 1):
-			if (0 == year % num) and isPrime(num):
+			if (0 == year % num):
 				if prime_bol:
 					if isPrime(num):
 						total += 1
