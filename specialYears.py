@@ -10,7 +10,10 @@ To Do:
 - Is it fast? Time. DONE. Could be faster...
 - Primes. DONE
 - Relationship between divisors and number of primes? ALMOST DONE.
+	--> dont have this graph connected.
 	--> interesting to see that 7 primes seem to be the max. Wonder why...
+	--> does the relationship look similar for evens and odds?
+	--> what about different types of numbers?
 '''
 
 import sys
