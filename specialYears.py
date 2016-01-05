@@ -17,6 +17,17 @@ import matplotlib.pyplot as mplot
 from matplotlib import style
 import time
 
+def printUsage():
+	"""
+	printUsage() prints out the usage message for the program.
+
+	@params: n/a.
+	@return: n/a.
+	"""
+	print 'Usage: $ python specialYears.py normal <start year> <end year>'
+	print 'Usage: $ python specialYears.py primes <start year> <end year>'
+	print 'Usage: $ python specialYears.py compare <start year> <end year>'
+
 def isPrime(div):
 	"""
 	isPrime() tells whether a given number is a prime or not.
@@ -33,6 +44,10 @@ def main():
 	# usage: $ python specialYears.py normal <start year> <end year>
 	# usage: $ python specialYears.py primes <start year> <end year>
 	# usage: $ python specialYears.py compare <start year> <end year>
+	if len(sys.argv) != 4:
+		print 'Error. Invalid number of arguments given.'
+		printUsage()
+		sys.exit()
 
 	# Changing the style gives us a little nicer looking backframe for the graph.
 	style.use('ggplot')
@@ -47,9 +62,11 @@ def main():
 
 	if y_e < y_s:
 		print 'Error: end < start'
+		printUsage()
 		sys.exit()
 	elif y_s < 1:
 		print 'Error: year < 0'
+		printUsage()
 		sys.exit()
 
 	res = []
@@ -73,8 +90,13 @@ def main():
 				if (0 == year % num) and isPrime(num):
 					total += 1
 			res.append(total)
+	elif mode == 'compare':
+		# compare mode.
+		# code.
+		print 'more code needed here'
 	else:
 		print 'Error: mode'
+		printUsage()
 		sys.exit()
 	t_f = time.time()
 
