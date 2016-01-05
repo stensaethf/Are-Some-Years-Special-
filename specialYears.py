@@ -40,6 +40,20 @@ def isPrime(div):
 			return False
 	return True
 
+def getDivisors(y_s, y_e, res, prime_bol):
+	# loop over each desired year and check for divisors.
+	for year in range(y_s, y_e + 1):
+		total = 1 # start at 1 because of division by itself.
+		for num in range(1, (year / 2) + 1):
+			if (0 == year % num) and isPrime(num):
+				if prime_bol:
+					if isPrime(num):
+						total += 1
+				else:
+					total += 1
+		res.append(total)
+	return res
+
 def main():
 	# usage: $ python specialYears.py normal <start year> <end year>
 	# usage: $ python specialYears.py primes <start year> <end year>
@@ -75,23 +89,16 @@ def main():
 	if mode == 'normal':
 		# normal mode.
 		# loop over each desired year and check for divisors.
-		for year in range(y_s, y_e + 1):
-			total = 1 # start at 1 because of division by itself.
-			for num in range(1, (year / 2) + 1):
-				if 0 == year % num:
-					total += 1
-			res.append(total)
+		res = getDivisors(y_s, y_e, res, False)
 	elif mode == 'primes':
 		# primes mode.
 		# loop over each desired year and check for primes.
-		for year in range(y_s, y_e + 1):
-			total = 1 # start at 1 because of division by itself.
-			for num in range(1, (year / 2) + 1):
-				if (0 == year % num) and isPrime(num):
-					total += 1
-			res.append(total)
+		res = getDivisors(y_s, y_e, res, True)
 	elif mode == 'compare':
 		# compare mode.
+		divisors = []
+		primes = []
+
 		# code.
 		print 'more code needed here'
 	else:
