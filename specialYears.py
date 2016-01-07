@@ -102,14 +102,15 @@ def main():
 		printUsage()
 		sys.exit()
 
-	x_values = [yr for yr in range(y_s, y_e + 1)]
 	t_s = time.time()
 	if mode == 'normal':
 		# normal mode.
 		res = getDivisors(y_s, y_e, [], False)
+		mplot.ylabel('Divisors')
 	elif mode == 'primes':
 		# primes mode.
 		res = getDivisors(y_s, y_e, [], True)
+		mplot.ylabel('Primes')
 	elif mode == 'compare':
 		# compare mode.
 		# x-axis: all divisors.
@@ -118,6 +119,8 @@ def main():
 		res = getDivisors(y_s, y_e, [], True) # primes
 
 		actual_plot.scatter(x_values, res) # scatter
+		mplot.xlabel('Divisors')
+		mplot.ylabel('Primes')
 		mplot.show()
 		return
 	else:
@@ -131,8 +134,11 @@ def main():
 	print('Number with highest number of divisors: ' + str(res.index(max(res)) + y_s) + '.')
 	print('Number of divisors for that number: ' + str(max(res)) + '.')
 
+	x_values = [yr for yr in range(y_s, y_e + 1)]
+
 	# plot the results
 	actual_plot.plot(x_values, res, 'k')
+	mplot.xlabel('Number')
 	mplot.show()
 
 
