@@ -117,7 +117,9 @@ def main():
 		x_values = getDivisors(y_s, y_e, [], False) # all divisors
 		res = getDivisors(y_s, y_e, [], True) # primes
 
-		print 'more code needed here to fix the graph.'
+		actual_plot.scatter(x_values, res) # scatter
+		mplot.show()
+		return
 	else:
 		print 'Error: mode.'
 		printUsage()
