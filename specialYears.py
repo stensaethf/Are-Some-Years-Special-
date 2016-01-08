@@ -9,12 +9,12 @@ To Do:
 - Divisors. DONE.
 - Is it fast? Time. DONE. Could be faster...
 - Primes. DONE.
-- Relationship between divisors and number of primes? ALMOST DONE.
+- Relationship between divisors and number of primes? DONE.
 	--> dont have this graph connected. DONE.
 	--> interesting to see that 7 primes seem to be the max. Wonder why... DONE.
 		--> max is 8 primes up to 100,000. DONE.
 			--> first occurance is in 30030. DONE.
-	--> does the relationship look similar for evens and odds? ALMOST DONE.
+	--> does the relationship look similar for evens and odds? DONE.
 	--> what about different types of numbers?
 '''
 
