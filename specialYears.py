@@ -18,7 +18,7 @@ To Do:
 	--> what about different types of numbers?
 		---> squares.
 		---> cubes.
-		---> triangular (sum from k=1 to n of k).
+		---> triangular (sum from k=1 to n of k). DONE.
 			--> T(1) = 1
 			--> T(2) = 3
 			--> T(3) = 6
@@ -71,14 +71,21 @@ def getDivisors(y_s, y_e, res, mode_num):
 		# squares, cubes, triangular.
 		if (mode_num == 4) or (mode_num == 5):
 			# squares, cubes.
+			res.append(1)
 		else:
 			# triangular.
-			t_n = 1
-			for i in range(2, y_s):
+			# T(n) = n + T(n - 1)
+			t_n = 0
+			for i in range(0, y_s):
 				t_n = t_n + i
 			for year in range(y_s, y_e + 1):
+				print year
 				t_n = t_n + year
-				# code.
+				total = 1
+				for num in range(1, (t_n / 2) + 1):
+					if (0 == t_n % num):
+						total += 1
+				res.append(total)
 	else:
 		# loop over each desired number and check for divisors.
 		for year in range(y_s, y_e + 1):
@@ -94,12 +101,6 @@ def getDivisors(y_s, y_e, res, mode_num):
 							total += 1
 					elif mode_num == 3:
 						total += 1
-					elif mode_num == 4:
-						# squares.
-					elif mode_num == 5:
-						# cubes.
-					elif mode_num == 6:
-						# triangular.
 					else: # 0
 						total += 1
 			res.append(total)
