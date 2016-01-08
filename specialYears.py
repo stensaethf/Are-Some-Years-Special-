@@ -16,6 +16,16 @@ To Do:
 			--> first occurance is in 30030. DONE.
 	--> does the relationship look similar for evens and odds? DONE.
 	--> what about different types of numbers?
+		---> squares.
+		---> cubes.
+		---> triangular (sum from k=1 to n of k).
+			--> T(1) = 1
+			--> T(2) = 3
+			--> T(3) = 6
+			--> T(4) = 10
+			--> T(5) = 15
+			--> T(6) = 21
+			--> T(n) = n + T(n - 1)
 '''
 
 import sys
