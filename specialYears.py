@@ -8,10 +8,12 @@ An investigation into whether some years/ numbers are more special than others.
 To Do:
 - Divisors. DONE.
 - Is it fast? Time. DONE. Could be faster...
-- Primes. DONE
+- Primes. DONE.
 - Relationship between divisors and number of primes? ALMOST DONE.
-	--> dont have this graph connected.
+	--> dont have this graph connected. DONE.
 	--> interesting to see that 7 primes seem to be the max. Wonder why...
+		--> max is 8 primes up to 100,000.
+			--> first occurance is in 30030.
 	--> does the relationship look similar for evens and odds?
 	--> what about different types of numbers?
 '''
@@ -57,6 +59,7 @@ def getDivisors(y_s, y_e, res, prime_bol):
 	"""
 	# loop over each desired number and check for divisors.
 	for year in range(y_s, y_e + 1):
+		print year
 		total = 1 # start at 1 because of division by itself.
 		for num in range(1, (year / 2) + 1):
 			if (0 == year % num):
