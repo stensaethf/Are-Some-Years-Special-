@@ -11,10 +11,10 @@ To Do:
 - Primes. DONE.
 - Relationship between divisors and number of primes? ALMOST DONE.
 	--> dont have this graph connected. DONE.
-	--> interesting to see that 7 primes seem to be the max. Wonder why...
-		--> max is 8 primes up to 100,000.
-			--> first occurance is in 30030.
-	--> does the relationship look similar for evens and odds?
+	--> interesting to see that 7 primes seem to be the max. Wonder why... DONE.
+		--> max is 8 primes up to 100,000. DONE.
+			--> first occurance is in 30030. DONE.
+	--> does the relationship look similar for evens and odds? ALMOST DONE.
 	--> what about different types of numbers?
 '''
 
@@ -46,7 +46,7 @@ def isPrime(div):
 			return False
 	return True
 
-def getDivisors(y_s, y_e, res, prime_bol):
+def getDivisors(y_s, y_e, res, mode_num):
 	"""
 	getDivisors() finds the number of divisors for each number within a range
 	of numbers. Can restrict to only primes is needed.
@@ -63,10 +63,15 @@ def getDivisors(y_s, y_e, res, prime_bol):
 		total = 1 # start at 1 because of division by itself.
 		for num in range(1, (year / 2) + 1):
 			if (0 == year % num):
-				if prime_bol:
+				if mode_num == 1:
 					if isPrime(num):
 						total += 1
-				else:
+				elif mode_num == 2:
+					if year % 2:
+						total += 1
+				elif mode_num == 3:
+					total += 1
+				else: # 0
 					total += 1
 		res.append(total)
 	return res
@@ -108,24 +113,32 @@ def main():
 	t_s = time.time()
 	if mode == 'normal':
 		# normal mode.
-		res = getDivisors(y_s, y_e, [], False)
+		res = getDivisors(y_s, y_e, [], 0)
 		mplot.ylabel('Divisors')
 	elif mode == 'primes':
 		# primes mode.
-		res = getDivisors(y_s, y_e, [], True)
+		res = getDivisors(y_s, y_e, [], 1)
 		mplot.ylabel('Primes')
 	elif mode == 'compare':
 		# compare mode.
 		# x-axis: all divisors.
 		# y-axis: primes.
-		x_values = getDivisors(y_s, y_e, [], False) # all divisors
-		res = getDivisors(y_s, y_e, [], True) # primes
+		x_values = getDivisors(y_s, y_e, [], 0) # all divisors
+		res = getDivisors(y_s, y_e, [], 1) # primes
 
 		actual_plot.scatter(x_values, res) # scatter
 		mplot.xlabel('Divisors')
 		mplot.ylabel('Primes')
 		mplot.show()
 		return
+	elif mode == 'odd':
+		# odd mode.
+		res = getDivisors(y_s, y_e, [], 2)
+		mplot.ylabel('Odds')
+	elif mode == 'even':
+		# even mode.
+		res = getDivisors(y_s, y_e, [], 3)
+		mplot.ylabel('Evens')
 	else:
 		print 'Error: mode.'
 		printUsage()

@@ -8,6 +8,6 @@ Interestingly enough, up to 100,000 the maximum number of primes is 8. And the f
 The relationship between primes and divisors appear to be positive, although mostly for the first 30,000.
 
 Usage:
-$ python specialYears.py \<normal | primes | compare \> \<start year\> \<end year\>
+$ python specialYears.py \<normal | primes | compare | even | odd\> \<start year\> \<end year\>
 
 More to come!
