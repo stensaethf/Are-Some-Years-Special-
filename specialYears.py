@@ -67,23 +67,42 @@ def getDivisors(y_s, y_e, res, mode_num):
 			 prime boolean (whether to restrict to primes or not).
 	@return: list with divisor counts.
 	"""
-	# loop over each desired number and check for divisors.
-	for year in range(y_s, y_e + 1):
-		print year
-		total = 1 # start at 1 because of division by itself.
-		for num in range(1, (year / 2) + 1):
-			if (0 == year % num):
-				if mode_num == 1:
-					if isPrime(num):
+	if mode_num >= 4:
+		# squares, cubes, triangular.
+		if (mode_num == 4) or (mode_num == 5):
+			# squares, cubes.
+		else:
+			# triangular.
+			t_n = 1
+			for i in range(2, y_s):
+				t_n = t_n + i
+			for year in range(y_s, y_e + 1):
+				t_n = t_n + year
+				# code.
+	else:
+		# loop over each desired number and check for divisors.
+		for year in range(y_s, y_e + 1):
+			print year
+			total = 1 # start at 1 because of division by itself.
+			for num in range(1, (year / 2) + 1):
+				if (0 == year % num):
+					if mode_num == 1:
+						if isPrime(num):
+							total += 1
+					elif mode_num == 2:
+						if year % 2:
+							total += 1
+					elif mode_num == 3:
 						total += 1
-				elif mode_num == 2:
-					if year % 2:
+					elif mode_num == 4:
+						# squares.
+					elif mode_num == 5:
+						# cubes.
+					elif mode_num == 6:
+						# triangular.
+					else: # 0
 						total += 1
-				elif mode_num == 3:
-					total += 1
-				else: # 0
-					total += 1
-		res.append(total)
+			res.append(total)
 	return res
 
 def main():
@@ -149,6 +168,18 @@ def main():
 		# even mode.
 		res = getDivisors(y_s, y_e, [], 3)
 		mplot.ylabel('Evens')
+	elif mode == 'square':
+		# square mode.
+		res = getDivisors(y_s, y_e, [], 4)
+		mplot.ylabel('Squares')
+	elif mode == 'cube':
+		# cube mode.
+		res = getDivisors(y_s, y_e, [], 5)
+		mplot.ylabel('Cubes')
+	elif mode == 'triangular':
+		# triangular mode.
+		res = getDivisors(y_s, y_e, [], 6)
+		mplot.ylabel('triangulars')
 	else:
 		print 'Error: mode.'
 		printUsage()
