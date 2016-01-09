@@ -16,8 +16,6 @@ To Do:
 			--> first occurance is in 30030. DONE.
 	--> does the relationship look similar for evens and odds? DONE.
 	--> what about different types of numbers?
-		---> squares.
-		---> cubes.
 		---> triangular (sum from k=1 to n of k). DONE.
 			--> T(1) = 1
 			--> T(2) = 3
@@ -67,25 +65,20 @@ def getDivisors(y_s, y_e, res, mode_num):
 			 prime boolean (whether to restrict to primes or not).
 	@return: list with divisor counts.
 	"""
-	if mode_num >= 4:
-		# squares, cubes, triangular.
-		if (mode_num == 4) or (mode_num == 5):
-			# squares, cubes.
-			res.append(1)
-		else:
-			# triangular.
-			# T(n) = n + T(n - 1)
-			t_n = 0
-			for i in range(0, y_s):
-				t_n = t_n + i
-			for year in range(y_s, y_e + 1):
-				print year
-				t_n = t_n + year
-				total = 1
-				for num in range(1, (t_n / 2) + 1):
-					if (0 == t_n % num):
-						total += 1
-				res.append(total)
+	if mode_num == 4:
+		# triangular.
+		# T(n) = n + T(n - 1)
+		t_n = 0
+		for i in range(0, y_s):
+			t_n = t_n + i
+		for year in range(y_s, y_e + 1):
+			print year
+			t_n = t_n + year
+			total = 1
+			for num in range(1, (t_n / 2) + 1):
+				if (0 == t_n % num):
+					total += 1
+			res.append(total)
 	else:
 		# loop over each desired number and check for divisors.
 		for year in range(y_s, y_e + 1):
@@ -169,17 +162,9 @@ def main():
 		# even mode.
 		res = getDivisors(y_s, y_e, [], 3)
 		mplot.ylabel('Evens')
-	elif mode == 'square':
-		# square mode.
-		res = getDivisors(y_s, y_e, [], 4)
-		mplot.ylabel('Squares')
-	elif mode == 'cube':
-		# cube mode.
-		res = getDivisors(y_s, y_e, [], 5)
-		mplot.ylabel('Cubes')
 	elif mode == 'triangular':
 		# triangular mode.
-		res = getDivisors(y_s, y_e, [], 6)
+		res = getDivisors(y_s, y_e, [], 4)
 		mplot.ylabel('triangulars')
 	else:
 		print 'Error: mode.'

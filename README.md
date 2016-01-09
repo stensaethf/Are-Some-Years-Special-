@@ -7,9 +7,11 @@ Interestingly enough, up to 100,000 the maximum number of primes is 8. And the f
 
 The relationship between primes and divisors appear to be positive, although mostly for the first 30,000.
 
-As for evens and aodds, both display a positive relationship. The higher the number, the higher amount of divisors. The relationship is much stronger for evens than odds.
+As for evens and odds, both display a positive relationship. The higher the number, the higher amount of divisors. The relationship is much stronger for evens than odds.
+
+Triangular numbers showcase another interesting relationship. Sure the trend is overall positive, but there are significant ups and downs, meaning that the trend is not steadily increasing, but rather going up and down with the overall result being positive.
 
 Usage:
-$ python specialYears.py \<normal | primes | compare | even | odd\> \<start year\> \<end year\>
+$ python specialYears.py \<normal | primes | compare | even | odd | triangular\> \<start year\> \<end year\>
 
 More to come!
