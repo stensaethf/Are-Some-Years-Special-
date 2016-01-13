@@ -6,25 +6,9 @@ Frederik Roenn Stensaeth
 An investigation into whether some years/ numbers are more special than others.
 
 To Do:
-- Divisors. DONE.
 - Is it fast? Time. DONE. Could be faster...
-- Primes. DONE.
-- Relationship between divisors and number of primes? DONE.
-	--> dont have this graph connected. DONE.
-	--> interesting to see that 7 primes seem to be the max. Wonder why... DONE.
-		--> max is 8 primes up to 100,000. DONE.
-			--> first occurance is in 30030. DONE.
-	--> does the relationship look similar for evens and odds? DONE.
-	--> what about different types of numbers?
-		---> triangular (sum from k=1 to n of k). DONE.
-			--> T(1) = 1
-			--> T(2) = 3
-			--> T(3) = 6
-			--> T(4) = 10
-			--> T(5) = 15
-			--> T(6) = 21
-			--> T(n) = n + T(n - 1)
 '''
+
 
 import sys
 import matplotlib.pyplot as mplot
@@ -41,6 +25,9 @@ def printUsage():
 	print 'Usage: $ python specialYears.py normal <start number> <end number>'
 	print 'Usage: $ python specialYears.py primes <start number> <end number>'
 	print 'Usage: $ python specialYears.py compare <start number> <end number>'
+	print 'Usage: $ python specialYears.py odd <start number> <end number>'
+	print 'Usage: $ python specialYears.py even <start number> <end number>'
+	print 'Usage: $ python specialYears.py triangular <start number> <end number>'
 
 def isPrime(div):
 	"""
@@ -100,9 +87,6 @@ def getDivisors(y_s, y_e, res, mode_num):
 	return res
 
 def main():
-	# usage: $ python specialYears.py normal <start number> <end number>
-	# usage: $ python specialYears.py primes <start number> <end number>
-	# usage: $ python specialYears.py compare <start number> <end number>
 	if len(sys.argv) != 4:
 		print 'Error. Invalid number of arguments given.'
 		printUsage()
@@ -110,9 +94,9 @@ def main():
 
 	# Changing the style gives us a nicer looking backframe for the graph.
 	style.use('ggplot')
-
 	figure = mplot.figure()
 	actual_plot = figure.add_subplot(1, 1, 1)
+	mplot.xlabel('Number')
 
 	# get the command line arguments and do necessary error checks.
 	try:
@@ -148,12 +132,8 @@ def main():
 		# y-axis: primes.
 		x_values = getDivisors(y_s, y_e, [], 0) # all divisors
 		res = getDivisors(y_s, y_e, [], 1) # primes
-
-		actual_plot.scatter(x_values, res) # scatter
 		mplot.xlabel('Divisors')
 		mplot.ylabel('Primes')
-		mplot.show()
-		return
 	elif mode == 'odd':
 		# odd mode.
 		res = getDivisors(y_s, y_e, [], 2)
@@ -180,8 +160,10 @@ def main():
 	x_values = [yr for yr in range(y_s, y_e + 1)]
 
 	# plot the results
-	actual_plot.plot(x_values, res, 'k')
-	mplot.xlabel('Number')
+	if mode == 'compare':
+		actual_plot.scatter(x_values, res) # scatter
+	else:
+		actual_plot.plot(x_values, res, 'k')
 	mplot.show()
 
 
