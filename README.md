@@ -13,5 +13,3 @@ Triangular numbers showcase another interesting relationship. Sure the trend is 
 
 Usage:
 $ python specialYears.py \<normal | primes | compare | even | odd | triangular\> \<start year\> \<end year\>
-
-More to come!

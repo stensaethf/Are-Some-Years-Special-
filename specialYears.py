@@ -4,11 +4,7 @@ Frederik Roenn Stensaeth
 01.03.16
 
 An investigation into whether some years/ numbers are more special than others.
-
-To Do:
-- Is it fast? Time. DONE. Could be faster...
 '''
-
 
 import sys
 import matplotlib.pyplot as mplot
@@ -128,8 +124,6 @@ def main():
 		mplot.ylabel('Primes')
 	elif mode == 'compare':
 		# compare mode.
-		# x-axis: all divisors.
-		# y-axis: primes.
 		x_values = getDivisors(y_s, y_e, [], 0) # all divisors
 		res = getDivisors(y_s, y_e, [], 1) # primes
 		mplot.xlabel('Divisors')
